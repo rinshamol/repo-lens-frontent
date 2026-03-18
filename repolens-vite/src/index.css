@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* @keyframes scan {
+  0% { transform: translateY(-20px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+} */
+
+@theme {
+  /* Mapping Tailwind names to our CSS variables */
+  --color-background: var(--bg-color);
+  --color-foreground: var(--text-color);
+}
+
+@layer base {
+  :root {
+    --bg-color: #f8fafc;    /* Light Mode: Slate 50 */
+    --text-color: #0f172a;  /* Light Mode: Slate 900 */
+  }
+
+  .dark {
+    --bg-color: #0a0f1e;    /* Dark Mode: Deep Midnight */
+    --text-color: #f8fafc;  /* Dark Mode: Slate 50 */
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    min-height: 100vh;
+  }
+}
+
+/* can you please explain the codes that we have done to understand the frontent structure and modify some features... i learn tailwind css and things that used in this ui */
