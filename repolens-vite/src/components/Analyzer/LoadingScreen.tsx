@@ -61,7 +61,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ startTime, progress }) =>
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/80 backdrop-blur-sm">
       <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
         <Loader2 className={`w-16 h-16 ${getSpinnerColor()} animate-spin mx-auto mb-6 transition-colors duration-500`} />
-        <h3 className="text-2xl font-bold mb-2">Analyzing...</h3>
+        <h3 className="text-2xl font-bold mb-2 text-black">Analyzing...</h3>
         <p className="text-gray-600 mb-8">{getStatus()}</p>
 
         <div className="w-full bg-gray-200 h-3 rounded-full mb-4 overflow-hidden">

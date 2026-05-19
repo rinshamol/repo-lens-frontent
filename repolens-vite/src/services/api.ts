@@ -32,6 +32,9 @@ export async function exchangeToken(code: string, redirectUri: string) {
 }
 
 export async function getUserInfo() {
-  const { data } = await api.get('/user-info');
-  return data;
+  const token = localStorage.getItem('gh_token');
+  const { data } = await axios.get('https://api.github.com/user', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data; // has .login, .avatar_url, .name, .id
 }

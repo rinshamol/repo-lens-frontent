@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Header from './components/Layout/Header';
 import RepositoryInput from './components/Analyzer/RepositoryInput';
 import LoadingScreen from './components/Analyzer/LoadingScreen';
@@ -7,8 +7,10 @@ import ErrorBoundary from './components/Error/ErrorBoundary';
 import ErrorMessage from './components/Error/ErrorMessage';
 import { analyzeRepository } from './services/api';
 import type { AnalysisResponse } from './types/analysis';
+import AboutPage from './pages/AboutPage';
 
 type AppStatus = 'idle' | 'loading' | 'success' | 'error';
+type AppPage = 'main' | 'about';
 
 const CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID as string;
 const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI as string ?? 'http://localhost:5173';
@@ -20,6 +22,7 @@ function App() {
   const [startTime, setStartTime] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
   const [lastUrl, setLastUrl] = useState<string>(''); // ← store for retry
+  const [page, setPage] = useState<AppPage>('main');
 
   const handleAnalyze = async (url: string) => {
     setStatus('loading');
@@ -27,7 +30,7 @@ function App() {
     setLastUrl(url);
     setStartTime(Date.now());
     setProgress(0);
-
+  
     try {
       setProgress(15);
       const data = await analyzeRepository(url);
@@ -78,12 +81,15 @@ function App() {
     setError(null);
     setLastUrl('');
   };
+  if (page === 'about') {
+    return <AboutPage onBack={() => setPage('main')} />;
+  }
+
 
   return (
     <ErrorBoundary>
       <div className="min-h-screen transition-colors duration-300 bg-background text-foreground antialiased">
-        <Header onReset={handleReset} onLogin={handleLogin} />
-
+      <Header onReset={handleReset} onLogin={handleLogin} onAbout={() => setPage('about')} />
         <main className="container mx-auto px-4 py-12">
           {(status === 'idle' || status === 'error') && (
             <div className="animate-in fade-in zoom-in duration-500">

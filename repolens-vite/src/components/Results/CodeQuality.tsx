@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldCheck, AlertTriangle, CheckCircle, TrendingUp } from "lucide-react";
+import { ShieldCheck, AlertTriangle, CheckCircle } from "lucide-react";
 import type { AnalysisResponse } from "../../types/analysis";
 
 interface Props {
