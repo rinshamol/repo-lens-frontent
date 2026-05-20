@@ -25,6 +25,15 @@ function App() {
   const [page, setPage] = useState<AppPage>('main');
 
   const handleAnalyze = async (url: string) => {
+    // Validate URL before sending to backend
+  const isValidGithubUrl = /^https?:\/\/github\.com\/[^/]+\/[^/]+/.test(url);
+  if (!isValidGithubUrl) {
+    setError('Please enter a valid GitHub URL (e.g. https://github.com/facebook/react)');
+    setStatus('error');
+    return;
+  }
+
+  
     setStatus('loading');
     setError(null);
     setLastUrl(url);
