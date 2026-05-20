@@ -43,7 +43,11 @@ function App() {
     try {
       setProgress(15);
       const data = await analyzeRepository(url);
-
+     if (data.errorMessage) {
+        setError(data.errorMessage);
+        setStatus('error');
+        return;
+      }
       if (data as unknown === 'PRIVATE') {
         setError('This repo is private. Please login with GitHub first.');
         setStatus('error');

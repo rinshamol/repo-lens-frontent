@@ -26,7 +26,9 @@ const getStatusColor = (status: string) => {
 
 const AnalysisResult: React.FC<Props> = ({ data, onReset }) => {
   const { analysis, repositoryName, repositoryUrl, metadata, processingTimeMs } = data;
-
+   if (!analysis) {
+    return null;
+  }
   // Parse summary if it's a raw JSON string (backend bug workaround)
   let parsedAnalysis = analysis;
   if (analysis.summary?.trim().startsWith('{')) {
