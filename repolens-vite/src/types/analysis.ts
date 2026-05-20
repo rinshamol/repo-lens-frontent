@@ -55,5 +55,9 @@ export interface AnalysisResponse {
     } | null;
   };
   processingTimeMs: number;
-  errorMessage: string | null;
+  errorMessage: {
+  message: string;
+  errorCode: string;
+  timestamp: string;
+} | null;
 }
