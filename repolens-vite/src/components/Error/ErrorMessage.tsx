@@ -11,8 +11,8 @@ type ErrorType = 'auth' | 'notfound' | 'network' | 'ratelimit' | 'server' | 'gen
 
 const getErrorType = (error: string): ErrorType => {
   const e = error.toLowerCase();
-  if (e.includes('private') || e.includes('login') || e.includes('auth')) return 'auth';
   if (e.includes('not found') || e.includes('inaccessible') || e.includes('404')) return 'notfound';
+  if (e.includes('private') || e.includes('login') || e.includes('auth')) return 'auth';
   if (e.includes('network') || e.includes('connection') || e.includes('fetch')) return 'network';
   if (e.includes('rate') || e.includes('429') || e.includes('too many')) return 'ratelimit';
   if (e.includes('500') || e.includes('server') || e.includes('parse')) return 'server';
