@@ -37,7 +37,7 @@ const errorConfig = {
     border: 'border-gray-200 dark:border-slate-600',
     title: 'Repository Not Found',
     hint: 'Double-check the URL and make sure the repository exists.',
-    showLogin: false,
+    showLogin: true,
     showRetry: false,
   },
   network: {
@@ -121,7 +121,7 @@ const ErrorMessage: React.FC<Props> = ({ error, onRetry, onLogin }) => {
               onClick={onLogin}
               className="text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-lg font-semibold transition-all"
             >
-              Login
+              {type === 'notfound' ? 'Try with Login' : 'Login'}
             </button>
           )}
           {config.showRetry && onRetry && (
