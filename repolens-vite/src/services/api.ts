@@ -18,6 +18,8 @@ export async function analyzeRepository(repoUrl: string): Promise<AnalysisRespon
 }
 
 export async function exchangeToken(code: string, redirectUri: string) {
+  console.log('Token in storage:', localStorage.getItem('gh_token'));
+  console.log('Sending code:', code);
   const params = new URLSearchParams({
     code,
     redirect_uri: redirectUri,
