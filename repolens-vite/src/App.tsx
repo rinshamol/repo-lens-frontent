@@ -126,6 +126,7 @@ function App() {
                     error={error}
                     onRetry={handleRetry}
                     onLogin={handleLogin}
+                    isLoggedIn={!!localStorage.getItem("gh_token")}
                   />
                 </div>
               )}

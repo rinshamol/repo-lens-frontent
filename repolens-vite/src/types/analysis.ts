@@ -37,7 +37,11 @@ export interface AnalysisResponse {
     }>;
     techStack: {
       languages: Array<{ name: string; version: string; releaseDate?: string }>;
-      frameworks: Array<{ name: string; version: string; releaseDate?: string }>;
+      frameworks: Array<{
+        name: string;
+        version: string;
+        releaseDate?: string;
+      }>;
       libraries: Array<{ name: string; version: string; purpose: string }>;
       buildTool: { name: string; version: string; releaseDate?: string };
       architecturePatterns: string[];
@@ -56,8 +60,8 @@ export interface AnalysisResponse {
   };
   processingTimeMs: number;
   errorMessage: {
-  message: string;
-  errorCode: string;
-  timestamp: string;
-} | null;
+    message: string;
+    errorCode: string;
+    timestamp: string;
+  } | null;
 }
