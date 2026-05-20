@@ -124,7 +124,12 @@ function App() {
                 <div className="max-w-2xl mx-auto mt-4">
                   <ErrorMessage
                     error={error}
-                    onRetry={handleRetry}
+                    onRetry={
+                      lastUrl &&
+                      /^https?:\/\/github\.com\/[^/]+\/[^/]+/.test(lastUrl)
+                        ? handleRetry
+                        : undefined
+                    }
                     onLogin={handleLogin}
                     isLoggedIn={!!localStorage.getItem("gh_token")}
                   />
