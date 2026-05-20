@@ -107,7 +107,7 @@ const ErrorMessage: React.FC<Props> = ({ error, onRetry, onLogin }) => {
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-sm text-gray-800 dark:text-white">{config.title}</p>
-          <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">{config.hint}</p>
+          <p className="text-xs text-gray-500 dark:text-slate-400 mt-0.5">{type === 'generic' ? error : config.hint}</p>
           {retryCount > 0 && (
             <p className="text-xs text-gray-400 dark:text-slate-500 mt-1">
               Retry attempt {retryCount}
